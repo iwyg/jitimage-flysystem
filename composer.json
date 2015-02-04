@@ -2,7 +2,7 @@
   "name": "thapp/jitimage-flysystem",
   "require": {
     "thapp/jitimage": "dev-develop",
-    "league/flystem": "dev-develop"
+    "league/flysystem": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.6@dev"

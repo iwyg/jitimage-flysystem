@@ -12,6 +12,7 @@
 namespace Thapp\JitImage\Loader;
 
 use League\Flysystem\FilesystemInterface;
+use Thapp\JitImage\Exception\SourceLoaderException;
 
 /**
  * @class FlysystemLoader
@@ -22,6 +23,8 @@ use League\Flysystem\FilesystemInterface;
  */
 class FlysystemLoader extends AbstractLoader
 {
+    private $fs;
+
     /**
      * Constructor.
      *
@@ -51,5 +54,13 @@ class FlysystemLoader extends AbstractLoader
         }
 
         return $resource;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function supports($file)
+    {
+        return $this->fs->has($file);
     }
 }
