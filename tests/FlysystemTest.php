@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This File is part of the Thapp\JitImageFlysystemLoader\Tests\Loader package
+ * This File is part of the Thapp\Jmg\Loader\Flysystem package
  *
  * (c) iwyg <mail@thomas-appel.com>
  *
@@ -9,35 +9,35 @@
  * that was distributed with this package.
  */
 
-namespace Thapp\JitImage\Tests\Loader;
+namespace Thapp\Jmg\Loader\Flysystem\Tests;
 
-use Thapp\JitImage\Loader\FlysystemLoader as Loader;
+use Thapp\Jmg\Loader\Flysystem\Flysystem as Loader;
 
 /**
- * @class FlysystemLoaderTest
+ * @class FlysystemTest
  *
- * @package Thapp\JitImageFlysystemLoader\Tests\Loader
+ * @package Thapp\Jmg\Loader\Flysystem
  * @version $Id$
  * @author iwyg <mail@thomas-appel.com>
  */
-class FlysystemLoaderTest extends \PHPUnit_Framework_TestCase
+class FlysystemTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function itShouldBeInstantiable()
     {
-        $this->assertInstanceof('Thapp\JitImage\Loader\LoaderInterface', new Loader($this->mockFlysys()));
+        $this->assertInstanceof('Thapp\Jmg\Loader\LoaderInterface', new Loader($this->mockFlysys()));
     }
 
     /** @test */
     public function itShouldLoadFile()
     {
-        $handle = fopen(__DIR__.'/../Fixures/pattern.png', 'r');
+        $handle = fopen(__DIR__.'/Fixures/pattern.png', 'r');
 
         $fs = $this->mockFlysys();
         $fs->expects($this->once())->method('readStream')->with('file')->willReturn($handle);
 
         $loader = new Loader($fs);
-        $this->assertInstanceof('Thapp\JitImage\Resource\FileresourceInterface', $loader->load('file'));
+        $this->assertInstanceof('Thapp\Jmg\Resource\FileresourceInterface', $loader->load('file'));
 
         fclose($handle);
     }
@@ -53,7 +53,7 @@ class FlysystemLoaderTest extends \PHPUnit_Framework_TestCase
         $loader = new Loader($fs);
         try {
             $loader->load('file');
-        } catch (\Thapp\JitImage\Exception\SourceLoaderException $e) {
+        } catch (\Thapp\Jmg\Exception\SourceLoaderException $e) {
             $this->assertTrue(true);
 
             return;
@@ -73,7 +73,7 @@ class FlysystemLoaderTest extends \PHPUnit_Framework_TestCase
         $loader = new Loader($fs);
         try {
             $loader->load('file');
-        } catch (\Thapp\JitImage\Exception\SourceLoaderException $e) {
+        } catch (\Thapp\Jmg\Exception\SourceLoaderException $e) {
             $this->assertTrue(true);
 
             return;

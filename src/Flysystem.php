@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This File is part of the Thapp\JitImage package
+ * This File is part of the Thapp\Jmg\Loader\Flysystem package
  *
  * (c) iwyg <mail@thomas-appel.com>
  *
@@ -9,20 +9,22 @@
  * that was distributed with this package.
  */
 
-namespace Thapp\JitImage\Loader;
+namespace Thapp\Jmg\Loader\Flysystem;
 
+use Thapp\Jmg\Loader\AbstractLoader;
 use League\Flysystem\FilesystemInterface;
-use Thapp\JitImage\Exception\SourceLoaderException;
+use Thapp\Jmg\Exception\SourceLoaderException;
 
 /**
  * @class FlysystemLoader
  *
- * @package Thapp\JitImage
+ * @package Thapp\Jmg\Loader\Flysystem
  * @version $Id$
  * @author iwyg <mail@thomas-appel.com>
  */
-class FlysystemLoader extends AbstractLoader
+class Flysystem extends AbstractLoader
 {
+    /** @var FilesystemInterface */
     private $fs;
 
     /**
